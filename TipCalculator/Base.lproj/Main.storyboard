@@ -17,17 +17,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Bill" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Wbc-aH-mQQ">
-                                <rect key="frame" x="119" y="196" width="23" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="og7-Ja-hTw">
                                 <rect key="frame" x="16" y="110" width="102" height="58"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UYZ-7S-yGH">
+                                <rect key="frame" x="94" y="82" width="265" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="72"/>
                                 <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -49,7 +49,7 @@
                                             <action selector="sliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="C7E-hs-Fkw"/>
                                         </connections>
                                     </slider>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ENTER BILL" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="59" clearButtonMode="whileEditing" id="RPD-A3-7da">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ENTER BILL" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="60" clearButtonMode="whileEditing" id="RPD-A3-7da">
                                         <rect key="frame" x="17" y="93" width="342" height="77"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.967741935483871" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
@@ -58,13 +58,22 @@
                                         <textInputTraits key="textInputTraits" keyboardType="decimalPad" keyboardAppearance="light"/>
                                         <connections>
                                             <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="iIq-o0-R9m"/>
+                                            <action selector="enterEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Ife-nF-a2B"/>
+                                            <action selector="enterStart:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Qbm-yo-jeM"/>
                                         </connections>
                                     </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ljt-yK-iMb">
+                                        <rect key="frame" x="61" y="99" width="29" height="58"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="36"/>
+                                        <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.025339527196273318" green="0.26605824071480499" blue="0.70214332460732987" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                             <view contentMode="scaleToFill" misplaced="YES" id="dES-nJ-4oT">
-                                <rect key="frame" x="0.0" y="166" width="375" height="106"/>
+                                <rect key="frame" x="0.0" y="167" width="375" height="106"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xK3-ND-vRg">
@@ -84,13 +93,6 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.037241726392784669" green="0.36026593143837249" blue="0.65469110910070838" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UYZ-7S-yGH">
-                                <rect key="frame" x="94" y="82" width="265" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="72"/>
-                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.49442652124888181" blue="0.89463350785340312" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
@@ -101,10 +103,14 @@
                     <navigationItem key="navigationItem" title="Tip Calculator" id="SOO-f0-Gan"/>
                     <connections>
                         <outlet property="billField" destination="RPD-A3-7da" id="726-sv-z7P"/>
+                        <outlet property="billView" destination="9Bd-xm-bgH" id="Khk-Un-rg2"/>
+                        <outlet property="moneyText" destination="Ljt-yK-iMb" id="sfd-Ra-D6a"/>
                         <outlet property="sliderLabel" destination="V1K-dZ-uQf" id="EJM-xd-fVT"/>
                         <outlet property="tipLabel" destination="xK3-ND-vRg" id="9x9-F9-fif"/>
                         <outlet property="tipSlider" destination="rG6-tg-j1g" id="k99-sc-DF0"/>
-                        <outlet property="totalLabel" destination="UYZ-7S-yGH" id="rPc-eO-PrN"/>
+                        <outlet property="tipView" destination="dES-nJ-4oT" id="W2h-M6-rz9"/>
+                        <outlet property="totalLabel" destination="UYZ-7S-yGH" id="l96-wS-Fd9"/>
+                        <outlet property="totalText" destination="og7-Ja-hTw" id="que-9I-VYe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
