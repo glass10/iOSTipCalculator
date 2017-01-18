@@ -68,6 +68,8 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 1, delay: 0.5,animations: {
             self.splitView.alpha = 1.0;
         })
+        
+        self.splitChange(tipSlider)
     }
     
     @IBAction func calculateTip(_ sender: Any) {
@@ -89,6 +91,8 @@ class ViewController: UIViewController {
     @IBAction func sliderChanged(_ sender: Any) {
         tipSlider.setValue(Float(lroundf(tipSlider.value)), animated: true)
         self.calculateTip(tipSlider)
+        
+        self.splitChange(tipSlider)
         
     }
     @IBAction func enterStart(_ sender: Any) {
@@ -115,7 +119,12 @@ class ViewController: UIViewController {
         let splitValue = round(Double(splitSlider.value))
         splitText.text = String(format: "$%.2f", (total / splitValue))
         
-        splitSliderText.text = String(format: "%.0f",splitValue) + " Person";
+        if(splitValue > 1){
+            splitSliderText.text = String(format: "%.0f",splitValue) + " People";
+        }
+        else {
+            splitSliderText.text = String(format: "%.0f",splitValue) + " Person";
+        }
         
     }
     
