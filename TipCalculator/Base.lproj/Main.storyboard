@@ -60,6 +60,7 @@
                                             <action selector="calculateTip:" destination="BYZ-38-t0r" eventType="editingChanged" id="iIq-o0-R9m"/>
                                             <action selector="enterEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="Ife-nF-a2B"/>
                                             <action selector="enterStart:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="Qbm-yo-jeM"/>
+                                            <action selector="startEdit:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="OaK-jH-19Z"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ljt-yK-iMb">
@@ -69,6 +70,48 @@
                                         <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" misplaced="YES" id="0r4-gS-yyd">
+                                        <rect key="frame" x="0.0" y="178" width="375" height="218"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Split" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="C1d-sh-1S1">
+                                                <rect key="frame" x="150" y="0.0" width="75" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="36"/>
+                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="12" id="Lja-zg-thC">
+                                                <rect key="frame" x="14" y="54" width="347" height="31"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <connections>
+                                                    <action selector="splitChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="K3T-65-9GK"/>
+                                                </connections>
+                                            </slider>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6Qs-ey-SCr">
+                                                <rect key="frame" x="94" y="100" width="265" height="86"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="72"/>
+                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Each" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WjH-Vp-1zg">
+                                                <rect key="frame" x="280" y="160" width="79" height="58"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="36"/>
+                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="1 Person" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zbu-P7-bP6">
+                                                <rect key="frame" x="17" y="78" width="342" height="39"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <color key="textColor" cocoaTouchSystemColor="lightTextColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.015686274509803921" green="0.20000000000000001" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.025339527196273318" green="0.26605824071480499" blue="0.70214332460732987" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
@@ -105,7 +148,11 @@
                         <outlet property="billField" destination="RPD-A3-7da" id="726-sv-z7P"/>
                         <outlet property="billView" destination="9Bd-xm-bgH" id="Khk-Un-rg2"/>
                         <outlet property="moneyText" destination="Ljt-yK-iMb" id="sfd-Ra-D6a"/>
-                        <outlet property="sliderLabel" destination="V1K-dZ-uQf" id="EJM-xd-fVT"/>
+                        <outlet property="sliderLabel" destination="V1K-dZ-uQf" id="9aI-B8-GG7"/>
+                        <outlet property="splitSlider" destination="Lja-zg-thC" id="JN6-Im-voX"/>
+                        <outlet property="splitSliderText" destination="zbu-P7-bP6" id="W5c-EZ-Sgx"/>
+                        <outlet property="splitText" destination="6Qs-ey-SCr" id="yBj-lb-kV1"/>
+                        <outlet property="splitView" destination="0r4-gS-yyd" id="AVl-bq-fKB"/>
                         <outlet property="tipLabel" destination="xK3-ND-vRg" id="9x9-F9-fif"/>
                         <outlet property="tipSlider" destination="rG6-tg-j1g" id="k99-sc-DF0"/>
                         <outlet property="tipView" destination="dES-nJ-4oT" id="W2h-M6-rz9"/>

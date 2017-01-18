@@ -20,8 +20,13 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var billView: UIView!
     @IBOutlet weak var tipView: UIView!
+    @IBOutlet weak var splitView: UIView!
     
     @IBOutlet weak var moneyText: UILabel!
+    
+    @IBOutlet weak var splitSlider: UISlider!
+    @IBOutlet weak var splitSliderText: UILabel!
+    @IBOutlet weak var splitText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +38,7 @@ class ViewController: UIViewController {
         totalLabel.alpha = 0.0;
         totalText.alpha = 0.0;
         moneyText.alpha = 0.0;
+        splitView.alpha = 0.0;
         
     }
     
@@ -59,6 +65,9 @@ class ViewController: UIViewController {
     
     @IBAction func onTap(_ sender: Any) {
         view.endEditing(true);
+        UIView.animate(withDuration: 1, delay: 0.5,animations: {
+            self.splitView.alpha = 1.0;
+        })
     }
     
     @IBAction func calculateTip(_ sender: Any) {
@@ -74,10 +83,13 @@ class ViewController: UIViewController {
         totalLabel.text = String(format: "$%.2f", total)
         
         sliderLabel.text = String(format: "%.0f",sliderValue) + "%";
+        
+        totalLabel.text = String(format: "$%.2f", total)
     }
     @IBAction func sliderChanged(_ sender: Any) {
         tipSlider.setValue(Float(lroundf(tipSlider.value)), animated: true)
         self.calculateTip(tipSlider)
+        
     }
     @IBAction func enterStart(_ sender: Any) {
         UIView.animate(withDuration: 1, animations: {
@@ -89,7 +101,24 @@ class ViewController: UIViewController {
             self.moneyText.alpha = 0.0;
         })
     }
-
+    @IBAction func startEdit(_ sender: Any) {
+        self.splitView.alpha = 0.0;
+    }
+    @IBAction func splitChange(_ sender: Any) {
+        let sliderValue = Double(tipSlider.value);
+        splitText.adjustsFontSizeToFitWidth = true;
+        
+        let bill = Double(billField.text!) ?? 0
+        let tip = bill * (sliderValue / 100);
+        let total = bill + tip;
+        
+        let splitValue = round(Double(splitSlider.value))
+        splitText.text = String(format: "$%.2f", (total / splitValue))
+        
+        splitSliderText.text = String(format: "%.0f",splitValue) + " Person";
+        
+    }
+    
 
 
 }
